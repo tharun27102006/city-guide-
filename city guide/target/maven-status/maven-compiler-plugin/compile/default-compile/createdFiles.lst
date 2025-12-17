@@ -1,0 +1,4 @@
+com\globalexplorer\cityguide\model\Destination.class
+com\globalexplorer\cityguide\CityGuideApplication.class
+com\globalexplorer\cityguide\model\Booking.class
+com\globalexplorer\cityguide\controller\HomeController.class

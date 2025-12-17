@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Explorer - City Guide & Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-globe-americas"></i> Global Explorer</h1>
+            <p>Discover amazing destinations around the world and book your next adventure</p>
+            
+            <div class="user-info">
+                <span id="welcome-user">Welcome, Traveler!</span>
+                <button id="logout-btn">Logout</button>
+            </div>
+            
+            <nav>
+                <a href="#" class="active" data-tab="destinations">All Destinations</a>
+                <a href="#" data-tab="europe">Europe</a>
+                <a href="#" data-tab="asia">Asia</a>
+                <a href="#" data-tab="india">India</a>
+                <a href="#" data-tab="americas">Americas</a>
+                <a href="#" data-tab="my-bookings">My Bookings</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+            <div class="section">
+                <h2>Popular Tourist Destinations</h2>
+                
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search destinations...">
+                </div>
+                
+                <div class="country-filter">
+                    <div class="country-btn active" data-country="all">All Countries</div>
+                    <div class="country-btn" data-country="France">France</div>
+                    <div class="country-btn" data-country="Italy">Italy</div>
+                    <div class="country-btn" data-country="Spain">Spain</div>
+                    <div class="country-btn" data-country="USA">USA</div>
+                    <div class="country-btn" data-country="Japan">Japan</div>
+                    <div class="country-btn" data-country="Thailand">Thailand</div>
+                    <div class="country-btn" data-country="India">India</div>
+                </div>
+                
+                <div class="destination-grid" id="destination-grid">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading destinations...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Global Explorer - Your Travel Companion</p>
+            <div class="footer-links">
+                <a href="#">Contact</a>
+                <a href="#">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p>&copy; 2025 Global Explorer. All rights reserved.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> info@globalexplorer.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Global Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-ticket-alt"></i> Book Your Trip</h2>
+            <div id="booking-details"></div>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="travelers">Number of Travelers *</label>
+                    <input type="number" id="travelers" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="travel-date">Travel Date *</label>
+                    <input type="date" id="travel-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="special-requests">Special Requests</label>
+                    <textarea id="special-requests" rows="3"></textarea>
+                </div>
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <div id="booking-summary-details"></div>
+                </div>
+                <button type="button" id="proceed-payment" class="btn-primary">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-credit-card"></i> Payment Details</h2>
+            <div class="payment-methods">
+                <button class="payment-method active" data-method="card">
+                    <i class="fas fa-credit-card"></i> Credit/Debit Card
+                </button>
+                <button class="payment-method" data-method="upi">
+                    <i class="fas fa-mobile-alt"></i> UPI
+                </button>
+                <button class="payment-method" data-method="wallet">
+                    <i class="fas fa-wallet"></i> Wallet
+                </button>
+            </div>
+            <form id="payment-form">
+                <div id="card-payment">
+                    <div class="form-group">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date</label>
+                            <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+                <div id="upi-payment" style="display:none;">
+                    <div class="form-group">
+                        <label for="upi-id">UPI ID</label>
+                        <input type="text" id="upi-id" placeholder="yourname@upi">
+                    </div>
+                </div>
+                <div id="wallet-payment" style="display:none;">
+                    <div class="form-group">
+                        <label>Select Wallet</label>
+                        <select id="wallet-select">
+                            <option>Paytm</option>
+                            <option>PhonePe</option>
+                            <option>Google Pay</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" id="confirm-payment" class="btn-primary">
+                    <i class="fas fa-lock"></i> Confirm Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content confirmation">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your booking has been successfully confirmed.</p>
+            <div id="confirmation-details"></div>
+            <button id="close-confirmation" class="btn-primary">Close</button>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
